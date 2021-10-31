@@ -5,6 +5,10 @@
  */
 package Model;
 
+import Controller.Controller;
+import Controller.CustomerManager;
+import java.util.ArrayList;
+
 /**
  *
  * @author Asus
@@ -22,6 +26,10 @@ public class User {
         this.password = password;
     }
 
+    public User() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
     public String getNama() {
         return nama;
     }
@@ -54,5 +62,36 @@ public class User {
         this.password = password;
     }
     
-    
+    public boolean cekRegister(String username, String email){
+        ArrayList<User> User = Controller.getAllUsers();
+        int i = 0;
+        boolean status = true;
+        while(status && i < User.size()){
+            if(username.equals(User.get(i).getUsername())){
+                status = false;
+            }
+            i++;
+        }
+        return status;
+    }
+        
+    public String cekLogin(String username, String password){
+        int i = 0;
+        ArrayList<User> allUser = new ArrayList<>();
+        String tipe = "";
+        boolean status = false;
+        
+        while (status == false && i < allUser.size()) {
+            if(allUser.get(i) instanceof Customers){
+                Customers customer = (Customers) allUser.get(i);
+                if(username.equals(customer.getUsername()) && password.equals(customer.getPassword())){
+                    CustomerManager.getInstance().setCustomer(customer);
+                    status = true;
+                    tipe = "Customer";
+                }
+            }
+            i++;
+        }
+        return(tipe);
+    }
 }
