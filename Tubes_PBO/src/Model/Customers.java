@@ -12,13 +12,16 @@ import java.util.ArrayList;
 public class Customers extends User{
     private ArrayList<Pesanan> pesanan;
     private int Saldoovo;
+    
+    public Customers(){
+    }
 
-    public Customers(ArrayList<Pesanan> pesanan, int Saldoovo, String nama, String alamat, String username, String password) {
-        super(nama, alamat, username, password);
+    public Customers(ArrayList<Pesanan> pesanan, int Saldoovo) {
         this.pesanan = pesanan;
         this.Saldoovo = Saldoovo;
     }
 
+    
     public ArrayList<Pesanan> getPesanan() {
         return pesanan;
     }
