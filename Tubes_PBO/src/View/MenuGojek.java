@@ -6,6 +6,7 @@
 package View;
 
 import Controller.CustomerManager;
+import Controller.PesananManager;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -66,9 +67,28 @@ public class MenuGojek {
                     }
                 }
             }
+        });
+        
+        buttonNext.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                int jawab = JOptionPane.showConfirmDialog(null, "Sudah Benar?");
+                if(jawab == JOptionPane.YES_OPTION){
+                    PesananManager.getInstance().getPesanan().setTitikakhir(String.valueOf(cbAlamat.getSelectedItem()));
+                }
+            }
+        });
+        
+        buttonLogout.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae) {
+                int jawab = JOptionPane.showConfirmDialog(null, "Yakin ingin Logout?");
+                if(jawab == JOptionPane.YES_OPTION){
+                    JOptionPane.showMessageDialog(null, "Terima Kasih sudah menggunakan layanan kami");
+                    DatabaseControl
+                }
+            }
         
         });
-    
+        
         
     }
 }
