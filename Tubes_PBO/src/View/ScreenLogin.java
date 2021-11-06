@@ -49,7 +49,7 @@ public class ScreenLogin {
         frame.add(inputpassword);
         
         JButton login;
-        login = new JButton("Save");
+        login = new JButton("Login");
         login.setBounds(50, 430, 70, 30);
         login.addActionListener(new ActionListener(){
             @Override
