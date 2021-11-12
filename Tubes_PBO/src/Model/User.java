@@ -101,6 +101,20 @@ public class User {
                     status = true;
                     tipe = "Customer";
                 }
+            }else if(allUser.get(i) instanceof Driver){
+                Driver driver = (Driver) allUser.get(i);
+                if(username.equals(driver.getUsername()) && password.equals(driver.getPassword())){
+                    CustomerManager.getInstance().setCustomer(driver);
+                    status = true;
+                    tipe = "driver";
+                }
+            }else if(allUser.get(i) instanceof Admin){
+                Admin admin = (Admin) allUser.get(i);
+                if(username.equals(admin.getUsername()) && password.equals(admin.getPassword())){
+                    CustomerManager.getInstance().setCustomer(admin);
+                    status = true;
+                    tipe = "admin";
+                }
             }
             i++;
         }
