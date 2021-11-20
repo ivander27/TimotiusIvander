@@ -75,6 +75,9 @@ public class CustomerScreen extends JFrame implements ActionListener{
                 new ScreenTopUp();
                 break;
             case"UserProfile":
+                frame.setVisible(false);
+                new ScreenUserProfile();
+                break;
             default:
                 break;
         }
