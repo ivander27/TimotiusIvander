@@ -15,6 +15,10 @@ public class PesananFood {
     private ArrayList<DetailPesanan> detailpesanan;
     private int TotalHargaFood;
 
+    public PesananFood() {
+    }
+
+    
     public PesananFood(int ID_PesananFood, String namarestoran, ArrayList<DetailPesanan> detailpesanan, int TotalHargaFood) {
         this.ID_PesananFood = ID_PesananFood;
         this.namarestoran = namarestoran;
@@ -26,32 +30,34 @@ public class PesananFood {
         return ID_PesananFood;
     }
 
-    public String getNamarestoran() {
-        return namarestoran;
-    }
-
-    public ArrayList<DetailPesanan> getDetailpesanan() {
-        return detailpesanan;
-    }
-
-    public int getTotalHargaFood() {
-        return TotalHargaFood;
-    }
-
     public void setID_PesananFood(int ID_PesananFood) {
         this.ID_PesananFood = ID_PesananFood;
+    }
+
+    public String getNamarestoran() {
+        return namarestoran;
     }
 
     public void setNamarestoran(String namarestoran) {
         this.namarestoran = namarestoran;
     }
 
+    public ArrayList<DetailPesanan> getDetailpesanan() {
+        return detailpesanan;
+    }
+
     public void setDetailpesanan(ArrayList<DetailPesanan> detailpesanan) {
         this.detailpesanan = detailpesanan;
+    }
+
+    public int getTotalHargaFood() {
+        return TotalHargaFood;
     }
 
     public void setTotalHargaFood(int TotalHargaFood) {
         this.TotalHargaFood = TotalHargaFood;
     }
+
+    
     
 }
