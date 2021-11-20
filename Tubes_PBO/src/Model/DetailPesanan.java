@@ -16,6 +16,10 @@ public class DetailPesanan {
     private int quantity;
     private int totalhargaorderan;
 
+    public DetailPesanan() {
+    }
+
+    
     public DetailPesanan(int ID_orderan, String namamakanan, String namaminuman, int quantity, int totalhargaorderan) {
         this.ID_orderan = ID_orderan;
         this.namamakanan = namamakanan;
@@ -28,41 +32,43 @@ public class DetailPesanan {
         return ID_orderan;
     }
 
-    public String getNamamakanan() {
-        return namamakanan;
-    }
-
-    public String getNamaminuman() {
-        return namaminuman;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public int getTotalhargaorderan() {
-        return totalhargaorderan;
-    }
-
     public void setID_orderan(int ID_orderan) {
         this.ID_orderan = ID_orderan;
+    }
+
+    public String getNamamakanan() {
+        return namamakanan;
     }
 
     public void setNamamakanan(String namamakanan) {
         this.namamakanan = namamakanan;
     }
 
+    public String getNamaminuman() {
+        return namaminuman;
+    }
+
     public void setNamaminuman(String namaminuman) {
         this.namaminuman = namaminuman;
+    }
+
+    public int getQuantity() {
+        return quantity;
     }
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
+    public int getTotalhargaorderan() {
+        return totalhargaorderan;
+    }
+
     public void setTotalhargaorderan(int totalhargaorderan) {
         this.totalhargaorderan = totalhargaorderan;
     }
+
+    
     
     
 }
