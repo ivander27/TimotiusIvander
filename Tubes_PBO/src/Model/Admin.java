@@ -7,13 +7,26 @@ package Model;
 
 /**
  *
- * @author Asus
+ * @author William
  */
-public class Admin extends User implements InterfaceAdmin{
-
-    public Admin(String nama, String alamat, String username, String password) {
-        super(nama, alamat, username, password);
+public class Admin extends User{
+    private boolean admin;
+    
+    public Admin(){
+        
     }
 
-       
+    public Admin(boolean admin, int idUser, String nama, String alamat, String username, String password) {
+        super(idUser, nama, alamat, username, password);
+        this.admin = admin;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
+    
 }
