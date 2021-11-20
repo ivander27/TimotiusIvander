@@ -4,66 +4,79 @@
  * and open the template in the editor.
  */
 package View;
-import java.awt.Color;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.WindowConstants;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 /**
  *
  * @author Asus
  */
-public class CustomerScreen {
+public class CustomerScreen extends JFrame implements ActionListener{
+    private JFrame frame;
+    private JLabel labeljudul;
+    private JButton gojekbutton,gofoodbutton,topupbutton,userprofilebutton;
     public CustomerScreen(){
-        JFrame frame = new JFrame("Selamat Datang!!!");
-        frame.setSize(500, 700);
+        frame = new JFrame("Login");
+        frame.setSize(400, 300);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
-        JPanel panel = new JPanel();
         
-        JLabel label;
-        label = new JLabel("Customer");
-        label.setBounds(200, 50, 300, 30);
-        frame.add(label);
-        JButton gojek;
-        gojek = new JButton("Gojek");
-        gojek.setBounds(50, 430, 70, 30);
-        gojek.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            } 
-        });
-        frame.add(gojek);
-        JButton gofood;
-        gofood = new JButton("Go Food");
-        gofood.setBounds(50, 430, 70, 30);
-        gofood.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            } 
-        });
-        frame.add(gofood);
-        JButton topup;
-        topup = new JButton("TopUp");
-        topup.setBounds(50, 430, 70, 30);
-        topup.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            } 
-        });
-        frame.add(topup);
-        JButton userprofile;
-        userprofile = new JButton("Profile");
-        userprofile.setBounds(50, 430, 70, 30);
-        userprofile.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            } 
-        });
-        frame.add(userprofile);
+        labeljudul = new JLabel("Silahkan Pilih ");
+        labeljudul.setBounds(160, 10, 200, 30);
+        
+        gojekbutton = new JButton("GoJek");
+        gojekbutton.setBounds(100, 50, 200, 30);
+        gojekbutton.addActionListener(this);
+        
+        gofoodbutton = new JButton("GoFood");
+        gofoodbutton.setBounds(100, 100, 200, 30);
+        gofoodbutton.addActionListener(this);
+        
+        topupbutton = new JButton("TopUp");
+        topupbutton.setBounds(100, 150, 200, 30);
+        topupbutton.addActionListener(this);
+        
+        userprofilebutton = new JButton("UserProfile");
+        userprofilebutton.setBounds(100, 150, 200, 30);
+        userprofilebutton.addActionListener(this);
+        
+        frame.add(labeljudul);
+        frame.add(gojekbutton);
+        frame.add(gofoodbutton);
+        frame.add(topupbutton);
+        frame.add(userprofilebutton);
+        frame.setLayout(null);
+        frame.setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+         String command = ae.getActionCommand();
+        switch(command){
+            case"GoJek":
+               frame.setVisible(false);
+               new MenuGojek();
+            break;
+            case"GoFood":
+                frame.setVisible(false);
+                new GoFoodScreen();
+                break;
+            case"TopUp":
+                frame.setVisible(false);
+                new ScreenTopUp();
+                break;
+            case"UserProfile":
+            default:
+                break;
+        }
     }
 }
