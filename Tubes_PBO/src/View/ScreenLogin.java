@@ -4,70 +4,96 @@
  * and open the template in the editor.
  */
 package View;
-import java.awt.Color;
+import Model.User;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
+import Controller.DatabaseControl;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 /**
  *
  * @author Asus
  */
-public class ScreenLogin {
+public class ScreenLogin  extends JFrame implements ActionListener{
+    private JFrame Login;
+    private JLabel labelusername,labelpassword,labeljudul;
+    private JTextField fieldusername,fieldemail;
+    private JPasswordField fieldpassword;
+    private JButton confirmbutton,backbutton;
+    
     public ScreenLogin(){
-        JFrame frame = new JFrame("Selamat Datang!!!");
-        frame.setSize(500, 700);
-        frame.setLocationRelativeTo(null);
-        JPanel panel = new JPanel();
+        Login = new JFrame("Login");
+        Login.setSize(400, 300);
+        Login.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        Login.setLocationRelativeTo(null);
         
-        JLabel label;
-        label = new JLabel("Login");
-        label.setBounds(200, 50, 300, 30);
-        frame.add(label);
+        labeljudul = new JLabel("Silahkan Insert Data Dibawah ");
+        labeljudul.setBounds(100, 10, 200, 30);
         
-        JLabel username;
-        username = new JLabel("Username");
-        username.setBounds(50, 100, 100, 30);
-        frame.add(username);
-        JTextField inputusername;
-        inputusername = new JTextField();
-        inputusername.setBounds(100, 105, 50, 50);
-        frame.add(inputusername);
-        JLabel password;
-        password = new JLabel("Password");
-        password.setBounds(50, 200, 100, 30);
-        frame.add(password);
-        JTextField inputpassword;
-        inputpassword = new JTextField();
-        inputpassword.setBounds(100, 205, 50, 50);
-        frame.add(inputpassword);
+        labelusername = new JLabel("Name");
+        labelusername.setBounds(45, 50, 100, 30);
         
-        JButton login;
-        login = new JButton("Login");
-        login.setBounds(50, 430, 70, 30);
-        login.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            } 
-        });
-        frame.add(login);
-        JButton cancel;
-        cancel = new JButton("Back");
-        cancel.setBounds(50, 430, 100, 30);
-        cancel.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.setVisible(false);
-                new ScreenLogin();
-            }
-            
-        });
-        frame.add(cancel);
+        fieldusername = new JTextField();
+        fieldusername.setBounds(150, 50, 200, 30);
+        
+        labelpassword = new JLabel("Password");
+        labelpassword.setBounds(45, 100, 100, 30);
+        
+        fieldpassword = new JPasswordField();
+        fieldpassword.setBounds(150, 100, 200, 30);        
+        
+        confirmbutton = new JButton("Confirm");
+        confirmbutton.setBounds(45,150,300,30);
+        confirmbutton.addActionListener(this);
+        
+        backbutton = new JButton("Back");
+        backbutton.setBounds(250,200,100,30);
+        backbutton.addActionListener(this);
+        
+        Login.add(labeljudul);
+        Login.add(backbutton);
+        Login.add(confirmbutton);
+        Login.add(fieldusername);
+        Login.add(labelusername);
+        Login.add(labelpassword);
+        Login.add(fieldpassword);
+        Login.setLayout(null);
+        Login.setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        String command = ae.getActionCommand();
+        switch(command){
+            case"Confirm":
+                String name = fieldusername.getText();
+                String password = fieldpassword.getText();
+                RegistrasiUser user = new RegistrasiUser();
+                if(name.equals("") || password.equals("")){
+                    JOptionPane.showMessageDialog(null, "Silahkan isikan email dan password anda", "Error", JOptionPane.ERROR_MESSAGE);
+                    break;
+                }else if(user.CekLogin(name, password)){
+                    Login.setVisible(false);
+                    new UpdateScreen(user);
+                }
+            break;
+            case"Reset":
+                Login.setVisible(false);
+                new RegisterScreen();
+                break;
+            case"Back":
+                Login.setVisible(false);
+                new MainMenu();
+                break;
+            default:
+                break;
+        }
     }
 }
