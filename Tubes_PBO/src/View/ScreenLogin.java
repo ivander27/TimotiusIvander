@@ -73,21 +73,9 @@ public class ScreenLogin  extends JFrame implements ActionListener{
         String command = ae.getActionCommand();
         switch(command){
             case"Confirm":
-                String name = fieldusername.getText();
-                String password = fieldpassword.getText();
-                RegistrasiUser user = new RegistrasiUser();
-                if(name.equals("") || password.equals("")){
-                    JOptionPane.showMessageDialog(null, "Silahkan isikan email dan password anda", "Error", JOptionPane.ERROR_MESSAGE);
-                    break;
-                }else if(user.CekLogin(name, password)){
-                    Login.setVisible(false);
-                    new UpdateScreen(user);
-                }
+              Login.setVisible(false);
+                new CustomerScreen();                           
             break;
-            case"Reset":
-                Login.setVisible(false);
-                new RegisterScreen();
-                break;
             case"Back":
                 Login.setVisible(false);
                 new MainMenu();
