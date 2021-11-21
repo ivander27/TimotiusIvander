@@ -60,8 +60,10 @@ public class GoFoodScreen extends JFrame implements ActionListener {
         
         buttonsubmit = new JButton("Next");
         buttonsubmit.setBounds(150,150,100,30);
+        buttonback.addActionListener(this);
         
         buttonback = new JButton("Back");
+        buttonback.addActionListener(this);
         buttonback.setBounds(150,200,100,30);
         
         frame.add(labeljudul);
