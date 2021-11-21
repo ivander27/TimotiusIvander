@@ -57,7 +57,7 @@ public class GoFoodScreen extends JFrame implements ActionListener {
         fieldtujuan = new JTextField();
         fieldtujuan.setBounds(150,100,200,30);
         
-        buttonsubmit = new JButton("Submit");
+        buttonsubmit = new JButton("Next");
         buttonsubmit.setBounds(150,150,100,30);
         
         buttonback = new JButton("Back");
@@ -74,19 +74,23 @@ public class GoFoodScreen extends JFrame implements ActionListener {
         frame.setVisible(true);
                 
     }
+
     @Override
     public void actionPerformed(ActionEvent ae) {
-         String command = ae.getActionCommand();
+          String command = ae.getActionCommand();
         switch(command){
-            case"Submit":
-              frame.setVisible(false);
-                new OrderFoodScreen();                           
+            case"Next":
+               frame.setVisible(false);
+               new OrderFoodScreen();
             break;
             case"Back":
                 frame.setVisible(false);
                 new CustomerScreen();
+                break;           
             default:
                 break;
         }
     }
+    
+   
 }
