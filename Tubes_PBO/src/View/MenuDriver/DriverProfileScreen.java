@@ -27,7 +27,7 @@ public class DriverProfileScreen extends JFrame implements ActionListener{
     private JLabel labeljudul,labelnamadriver,labeljeniskendaraan,labelplatno,labelsaldo,labelpendapatan,
             labelisinama,labelisijeniskendaraan,labelisiplatno,labelisisaldo,labelisipendapatan,labeltariksaldo;
     private JTextField fieldnominal;
-    private JButton tariksaldobutton,backbutton;
+    private JButton tariksaldobutton,backbutton,lihatriwayatbutton;
     
     public DriverProfileScreen() {
         frame = new JFrame("Driver Screen");
@@ -79,6 +79,9 @@ public class DriverProfileScreen extends JFrame implements ActionListener{
         
         backbutton = new JButton("Back");
         backbutton.setBounds(180,350,100,30);
+        
+        lihatriwayatbutton = new JButton("LihatRiwayat");
+        lihatriwayatbutton.setBounds(70,400,200,30);
       
         frame.add(labeljudul);
         frame.add(labelnamadriver);
@@ -95,6 +98,7 @@ public class DriverProfileScreen extends JFrame implements ActionListener{
         frame.add(fieldnominal);
         frame.add(tariksaldobutton);
         frame.add(backbutton);
+        frame.add(lihatriwayatbutton);
         frame.setLayout(null);
         frame.setVisible(true);
         
@@ -112,6 +116,9 @@ public class DriverProfileScreen extends JFrame implements ActionListener{
                 frame.setVisible(false);
                 new DriverScreen();
                 break;
+            case"LihatRiwayat":
+                frame.setVisible(false);
+                new RiwayatDriverScreen;
             default:
                 break;
         }
