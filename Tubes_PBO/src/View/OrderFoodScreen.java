@@ -5,95 +5,104 @@
  */
 package View;
 
-import Controller.DatabaseControl;
-import java.awt.Color;
+import Model.Food;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JComboBox;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JComboBox;
 
 /**
  *
  * @author Asus
  */
-public class OrderFoodScreen {
+public class OrderFoodScreen extends JFrame implements ActionListener{
+    private JFrame frame;
+    private JLabel labelmakanan1,labelmakanan2,labelmakanan3,labelmakanan4,labelmakanan5,labeljudul;
+    private JTextField fieldqty1,fieldqty2,fieldqty3,fieldqty4,fieldqty5;
+    private JButton buttonsubmit,buttoncancel;
     public OrderFoodScreen(){
-        JFrame frame = new JFrame("Pilih Food!!!");
-        frame.setSize(500, 700);
+        frame = new JFrame("Go Food");
+        frame.setSize(400, 500);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
-        JPanel panel = new JPanel();
         
-        String namamakanan[] = new String[1];
-        //namarestaurant[0]=;
+        labeljudul = new JLabel("Silahkan Pilih Makanan");
+        labeljudul.setBounds(150, 10, 200, 30);
+                        
+        labelmakanan1 = new JLabel("Makanan 1");
+        labelmakanan1.setBounds(45,50,100,30);
         
-        JComboBox makanan;
-        makanan = new JComboBox();
-        makanan.setBounds(200, 50, 300, 30);
-        makanan.addActionListener(new ActionListener(){
-        @Override
-            public void actionPerformed(ActionEvent e) {
-                
-            } 
-        });
-        frame.add(makanan);
-       
-        JLabel qtymakanan;
-        qtymakanan = new JLabel("Jumlah Makanan");
-        qtymakanan.setBounds(50, 100, 100, 30);
-        frame.add(qtymakanan);
-       
-        JTextField inputqtymakan;
-        inputqtymakan = new JTextField();
-        inputqtymakan.setBounds(100, 105, 50, 50);
-        frame.add(inputqtymakan);
+         fieldqty1 = new JTextField();
+        fieldqty1.setBounds(150,50,50,30);
         
-        JComboBox minuman;
-        minuman = new JComboBox();
-        minuman.setBounds(200, 50, 300, 30);
-        minuman.addActionListener(new ActionListener(){
-        @Override
-            public void actionPerformed(ActionEvent e) {
-                
-            } 
-        });
-        frame.add(minuman);
+        labelmakanan2 = new JLabel("Makanan2");
+        labelmakanan2.setBounds(45,100,100,30);
         
-        JLabel qtyminuman;
-        qtyminuman = new JLabel("Jumlah Minuman");
-        qtyminuman.setBounds(50, 100, 100, 30);
-        frame.add(qtyminuman);
-       
-        JTextField inputqtyminum;
-        inputqtyminum = new JTextField();
-        inputqtyminum.setBounds(100, 105, 50, 50);
-        frame.add(inputqtyminum);
+        fieldqty2 = new JTextField();
+        fieldqty2.setBounds(150,100,50,30);
         
-        JButton next;
-        next = new JButton("Next");
-        next.setBounds(50, 430, 70, 30);
-        next.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            } 
-        });
-        frame.add(next);
+        labelmakanan3 = new JLabel("Makanan3");
+        labelmakanan3.setBounds(45,150,100,30);
         
-        JButton back;
-        back = new JButton("Back");
-        back.setBounds(50, 430, 70, 30);
-        back.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            } 
-        });
-        frame.add(back);
+        fieldqty3 = new JTextField();
+        fieldqty3.setBounds(150,150,50,30);
         
+        labelmakanan4 = new JLabel("Makanan4");
+        labelmakanan4.setBounds(45,200,100,30);
+        
+        fieldqty4 = new JTextField();
+        fieldqty4.setBounds(150,200,50,30);
+        
+        labelmakanan5 = new JLabel("Makanan5");
+        labelmakanan5.setBounds(45,250,100,30);
+        
+        fieldqty5 = new JTextField();
+        fieldqty5.setBounds(150,250,50,30);
+        
+        buttonsubmit = new JButton("Next");
+        buttonsubmit.setBounds(100,300,100,30);
+        
+        buttoncancel = new JButton("Cancel");
+        buttoncancel.setBounds(300,300,100,30);
+        
+        frame.add(labeljudul);
+        frame.add(labelmakanan1);
+        frame.add(buttonsubmit);
+        frame.add(fieldqty1);
+        frame.add(labelmakanan2);
+        frame.add(fieldqty2);  
+        frame.add(labelmakanan3);
+        frame.add(fieldqty3);
+        frame.add(labelmakanan4);
+        frame.add(fieldqty4);
+        frame.add(labelmakanan5);
+        frame.add(fieldqty5);
+        frame.add(buttoncancel);
+        frame.setLayout(null);
+        frame.setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+         String command = ae.getActionCommand();
+        switch(command){
+            case"Next":
+              frame.setVisible(false);
+                new PembayaranFoodScreen();                           
+            break;
+            case"Cancel":
+                frame.setVisible(false);
+                new GoFoodScreen();
+            default:
+                break;
+        }
     }
 }
