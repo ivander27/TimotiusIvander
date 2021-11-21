@@ -99,9 +99,11 @@ public class PembayaranFoodScreen extends JFrame implements ActionListener {
         
         buttonbayar = new JButton("Bayar");
         buttonbayar.setBounds(70,450,200,30);
+        buttonbayar.addActionListener(this);
         
         buttoncancel = new JButton("Cancel");
         buttoncancel.setBounds(70,500,200,30);
+        buttoncancel.addActionListener(this);
         
         frame.add(buttoncancel);
         frame.add(buttonbayar);
