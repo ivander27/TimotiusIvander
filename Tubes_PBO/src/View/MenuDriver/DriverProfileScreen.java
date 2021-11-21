@@ -110,7 +110,7 @@ public class DriverProfileScreen extends JFrame implements ActionListener{
         switch(command){
             case"TarikSaldo":
                frame.setVisible(false);
-               
+               new DriverScreen();
             break;
             case"Back":
                 frame.setVisible(false);
