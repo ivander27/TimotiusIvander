@@ -80,7 +80,7 @@ public class GoFoodScreen extends JFrame implements ActionListener {
         switch(command){
             case"Submit":
               frame.setVisible(false);
-                new PesanFoodScreen();                           
+                new OrderFoodScreen();                           
             break;
             case"Back":
                 frame.setVisible(false);
