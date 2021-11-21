@@ -118,7 +118,7 @@ public class DriverProfileScreen extends JFrame implements ActionListener{
                 break;
             case"LihatRiwayat":
                 frame.setVisible(false);
-                new RiwayatDriverScreen;
+                new RiwayatDriverScreen();
             default:
                 break;
         }
