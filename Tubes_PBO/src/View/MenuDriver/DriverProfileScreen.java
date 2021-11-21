@@ -75,10 +75,10 @@ public class DriverProfileScreen extends JFrame implements ActionListener{
         fieldnominal.setBounds(150,300,100,30);
         
         tariksaldobutton = new JButton("TarikSaldo");
-        tariksaldobutton.setBounds(70,400,100,30);
+        tariksaldobutton.setBounds(70,350,100,30);
         
         backbutton = new JButton("Back");
-        backbutton.setBounds(70,450,100,30);
+        backbutton.setBounds(180,350,100,30);
       
         frame.add(labeljudul);
         frame.add(labelnamadriver);
