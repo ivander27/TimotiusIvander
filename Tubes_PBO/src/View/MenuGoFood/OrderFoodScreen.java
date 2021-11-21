@@ -69,9 +69,11 @@ public class OrderFoodScreen extends JFrame implements ActionListener{
         
         buttonsubmit = new JButton("Next");
         buttonsubmit.setBounds(100,300,100,30);
+        buttonsubmit.addActionListener(this);
         
         buttoncancel = new JButton("Cancel");
         buttoncancel.setBounds(250,300,100,30);
+        buttoncancel.addActionListener(this);
         
         frame.add(labeljudul);
         frame.add(labelmakanan1);
