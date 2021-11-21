@@ -5,62 +5,88 @@
  */
 package View;
 
-import Controller.DatabaseControl;
-import java.awt.Color;
+import Model.Restaurant;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.WindowConstants;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JComboBox;
 /**
  *
  * @author Asus
  */
-public class GoFoodScreen {
+public class GoFoodScreen extends JFrame implements ActionListener {
+    private JFrame frame;
+    private JLabel restaurantlabel,labeljudul,labeltujuan;
+    private JTextField fieldtujuan;
+    private JButton buttonsubmit,buttonback;
+    private JComboBox restaurant;
+    private ArrayList<Restaurant> listresto = new ArrayList<>();
     public GoFoodScreen(){
-        JFrame frame = new JFrame("Pilih Restaurant!!!");
-        frame.setSize(500, 700);
+        frame = new JFrame("Go Food");
+        frame.setSize(400, 300);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
-        JPanel panel = new JPanel();
         
-        String namarestaurant[] = new String[1];
-        //namarestaurant[0]=;
+        labeljudul = new JLabel("Silahkan Pilih ");
+        labeljudul.setBounds(160, 10, 200, 30);
         
-        JComboBox restaurant;
+        restaurantlabel = new JLabel("Pilih Restaurant");
+        restaurantlabel.setBounds(45,50,100,30);
+        
+        //DatabaseController controller = new DatabaseController();
+        //listresto = controller.getCategoryUser();
+        //int banyak = listresto.size();
+        //String[] resto = new String[banyak];
+        //for(int i = 0 ; i < listresto.size(); i++){
+        //    resto[i] = listresto.get(i).getNamarestaurant();
+        //}
         restaurant = new JComboBox();
-        restaurant.setBounds(200, 50, 300, 30);
-        restaurant.addActionListener(new ActionListener(){
-        @Override
-            public void actionPerformed(ActionEvent e) {
-                
-            } 
-        });
+        restaurant.setBounds(150, 50, 200, 30);
+        
+        labeltujuan = new JLabel("Alamat Tujuan");
+        labeltujuan.setBounds(45,100,100,30);
+        
+        fieldtujuan = new JTextField();
+        fieldtujuan.setBounds(150,100,200,30);
+        
+        buttonsubmit = new JButton("Submit");
+        buttonsubmit.setBounds(150,150,100,30);
+        
+        buttonback = new JButton("Back");
+        buttonback.setBounds(150,200,100,30);
+        
+        frame.add(labeljudul);
+        frame.add(fieldtujuan);
+        frame.add(buttonsubmit);
+        frame.add(buttonback);
         frame.add(restaurant);
-        
-        JButton next;
-        next = new JButton("Next");
-        next.setBounds(50, 430, 70, 30);
-        next.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            } 
-        });
-        frame.add(next);
-        
-        JButton back;
-        back = new JButton("Back");
-        back.setBounds(50, 430, 70, 30);
-        back.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            } 
-        });
-        frame.add(back);
-        
+        frame.add(restaurantlabel);  
+        frame.add(labeltujuan);
+        frame.setLayout(null);
+        frame.setVisible(true);
+                
+    }
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+         String command = ae.getActionCommand();
+        switch(command){
+            case"Submit":
+              frame.setVisible(false);
+                new PesanFoodScreen();                           
+            break;
+            case"Back":
+                frame.setVisible(false);
+                new CustomerScreen();
+            default:
+                break;
+        }
     }
 }
