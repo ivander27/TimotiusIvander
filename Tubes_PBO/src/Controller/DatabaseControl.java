@@ -52,7 +52,12 @@ public class DatabaseControl {
             while(rs.next()){
                 Pesanan pesanan = new Pesanan();
                 pesanan.setId_pesanan(rs.getInt("id_pesanan"));
+                pesanan.setNamacustomer(query);
+                pesanan.setNamadriver(query);
             }
+        }catch(SQLException e){
+            e.printStackTrace();
         }
+        return null;
     }
 }
