@@ -84,6 +84,7 @@ public class DriverProfileScreen extends JFrame implements ActionListener{
         
         lihatriwayatbutton = new JButton("LihatRiwayat");
         lihatriwayatbutton.setBounds(70,400,200,30);
+        lihatriwayatbutton.addActionListener(this);
       
         frame.add(labeljudul);
         frame.add(labelnamadriver);
