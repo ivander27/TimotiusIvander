@@ -26,7 +26,7 @@ public class ScreenLogin  extends JFrame implements ActionListener{
     private JLabel labelusername,labelpassword,labeljudul;
     private JTextField fieldusername,fieldemail;
     private JPasswordField fieldpassword;
-    private JButton confirmbutton,backbutton;
+    private JButton confirmbutton;
     
     public ScreenLogin(){
         Login = new JFrame("Login");
@@ -53,12 +53,8 @@ public class ScreenLogin  extends JFrame implements ActionListener{
         confirmbutton.setBounds(45,150,300,30);
         confirmbutton.addActionListener(this);
         
-        backbutton = new JButton("Back");
-        backbutton.setBounds(250,200,100,30);
-        backbutton.addActionListener(this);
-        
+              
         Login.add(labeljudul);
-        Login.add(backbutton);
         Login.add(confirmbutton);
         Login.add(fieldusername);
         Login.add(labelusername);
@@ -76,10 +72,6 @@ public class ScreenLogin  extends JFrame implements ActionListener{
               Login.setVisible(false);
                 new CustomerScreen();                           
             break;
-            case"Back":
-                Login.setVisible(false);
-                new MainMenu();
-                break;
             default:
                 break;
         }
