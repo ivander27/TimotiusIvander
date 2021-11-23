@@ -5,6 +5,11 @@
  */
 package View.MenuGojek;
 
+import Controller.CustomerManager;
+import Controller.PesananManager;
+import Controller.PesananOjekManager;
+import Model.Pesanan;
+import Model.PesananOjek;
 import View.CustomerScreen;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -53,8 +58,9 @@ public class MenuGojek implements ActionListener{
         fieldalamattujuan = new JTextField();
         fieldalamattujuan.setBounds(280,160,300,50);
         
+        String jeniskendaraan[] = {"Motor","Mobil"};
         //Combo Box
-        cBjeniskendaraan = new JComboBox();
+        cBjeniskendaraan = new JComboBox(jeniskendaraan);
         cBjeniskendaraan.setBounds(280,220,300,50);
         
         //Button
@@ -85,18 +91,29 @@ public class MenuGojek implements ActionListener{
         framemenugojek.setVisible(true);
     }
     
-    private void submit(){
-    }
     
     @Override
     public void actionPerformed(ActionEvent ae) {
         String command = ae.getActionCommand();
         switch(command){
             case "Submit":
-                //
+                PesananOjek pesananojek = new PesananOjek();
+                Pesanan pesanan = new Pesanan();
+                pesanan.setTitikawal(fieldalamatjemput.getText());
+                pesanan.setTitikakhir(fieldalamattujuan.getText());
+                pesanan.setCustomer(CustomerManager.getInstance().getCustomer());
+                pesananojek.setJeniskendaraan((String) cBjeniskendaraan.getItemAt(cBjeniskendaraan.getSelectedIndex()));
+                PesananManager.getInstance().setPesanan(pesanan);
+                PesananOjekManager.getInstance().setPesananojek(pesananojek);
+                framemenugojek.setVisible(false);
+                new PembayaranGojek();
             break;
             case "Back":
                 new CustomerScreen();
+            break;
+            case "Pilih Lokasi Dengan GPS":
+                fieldalamatjemput.setText(CustomerManager.getInstance().getCustomer().getAlamat());
+            break;
         }
     }
 }
