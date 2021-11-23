@@ -38,7 +38,7 @@ public class MenuProfile {
         buttonLogout = new JButton("Logout");
         
         if(CustomerManager.getInstance().getUser() instanceof Customers){
-            Member member = (Member) UserManager.getInstance().getUser();
+            Customers customer = (Customers) CustomerManager.getInstance().getUser();
             labelSaldoOvo = new JLabel("Saldo Ovo");
             labelIsiSaldo = new JLabel("Rp. " + Customers.getSaldoovo());
             frame.add(labelSaldoOvo);
