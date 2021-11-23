@@ -4,18 +4,23 @@
  * and open the template in the editor.
  */
 package View;
+import Controller.AdminManager;
+import Controller.CustomerManager;
+import Controller.DatabaseControl;
+import Controller.DriverManager;
+import Controller.UserManager;
+import Model.Admin;
+import Model.Customers;
+import Model.Driver;
 import Model.User;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
-import Controller.DatabaseControl;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 /**
  *
@@ -69,8 +74,36 @@ public class ScreenLogin  extends JFrame implements ActionListener{
         String command = ae.getActionCommand();
         switch(command){
             case"Confirm":
-              Login.setVisible(false);
-                new CustomerScreen();                           
+                String username = fieldusername.getText();
+                String password = new String(fieldpassword.getPassword());
+                User user = new User();
+                if(username.equals("") || password.equals("")){
+                    JOptionPane.showMessageDialog(null, "Silahkan isikan email dan password anda", "Error", JOptionPane.ERROR_MESSAGE);
+                    break;
+                }else if(user.cekLogin(username, password)){
+                    if(UserManager.getInstance().getUser().getTipe() == 1){
+                        DatabaseControl ctrl = new DatabaseControl();
+                        Admin admin = new Admin();
+                        admin = ctrl.getAdmin(UserManager.getInstance().getUser().getId_User());
+                        AdminManager.getInstance().setAdmin(admin);
+                        Login.setVisible(false);
+                        new AdminScreen();
+                    }else if(UserManager.getInstance().getUser().getTipe() == 2){
+                        DatabaseControl ctrl = new DatabaseControl();
+                        Customers customers = new Customers();
+                        customers = ctrl.getCustomer(UserManager.getInstance().getUser().getId_User());
+                        CustomerManager.getInstance().setCustomer(customers);
+                        Login.setVisible(false);
+                        new CustomerScreen();
+                    }else if(UserManager.getInstance().getUser().getTipe() == 3){
+                        DatabaseControl ctrl = new DatabaseControl();
+                        Driver driver = new Driver();
+                        driver = ctrl.getDriver(UserManager.getInstance().getUser().getId_User());
+                        DriverManager.getInstance().setDrivers(driver);
+                        Login.setVisible(false);
+                        new DriverScreen();
+                    }
+                }                 
             break;
             default:
                 break;
