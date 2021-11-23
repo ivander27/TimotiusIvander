@@ -5,8 +5,6 @@
  */
 package Model;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author Asus
@@ -15,17 +13,17 @@ public class Restaurant {
     private int id_retaurant;
     private String namarestaurant;
     private String alamatrestaurant;
-    private ArrayList<Food>food;
 
     public Restaurant() {
     }
 
-    public Restaurant(int id_retaurant, String namarestaurant, String alamatrestaurant, ArrayList<Food> food) {
+    public Restaurant(int id_retaurant, String namarestaurant, String alamatrestaurant) {
         this.id_retaurant = id_retaurant;
         this.namarestaurant = namarestaurant;
         this.alamatrestaurant = alamatrestaurant;
-        this.food = food;
     }
+
+    
 
     public int getId_retaurant() {
         return id_retaurant;
@@ -51,12 +49,4 @@ public class Restaurant {
         this.alamatrestaurant = alamatrestaurant;
     }
 
-    public ArrayList<Food> getFood() {
-        return food;
-    }
-
-    public void setFood(ArrayList<Food> food) {
-        this.food = food;
-    }
-    
 }
