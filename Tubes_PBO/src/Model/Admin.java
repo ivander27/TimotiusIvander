@@ -10,23 +10,38 @@ package Model;
  * @author William
  */
 public class Admin extends User{
-    private boolean admin;
+    private int id_admin;
+    private String alamat;
+    
     
     public Admin(){
         
     }
 
-    public Admin(boolean admin, int idUser, String nama, String alamat, String username, String password) {
-        super(idUser, nama, alamat, username, password);
-        this.admin = admin;
+    public Admin(int id_admin, String alamat) {
+        this.id_admin = id_admin;
+        this.alamat = alamat;
     }
 
-    public boolean isAdmin() {
-        return admin;
+    public Admin(int id_admin, String alamat, int id_User, String nama, String username, String password, String noHp, String email, String tanggallahir, int tipe) {
+        super(id_User, nama, username, password, noHp, email, tanggallahir, tipe);
+        this.id_admin = id_admin;
+        this.alamat = alamat;
     }
 
-    public void setAdmin(boolean admin) {
-        this.admin = admin;
+    public int getId_admin() {
+        return id_admin;
     }
-    
+
+    public void setId_admin(int id_admin) {
+        this.id_admin = id_admin;
+    }
+
+    public String getAlamat() {
+        return alamat;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
+    }
 }
