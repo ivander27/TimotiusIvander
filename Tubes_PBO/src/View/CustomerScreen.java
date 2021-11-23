@@ -78,7 +78,7 @@ public class CustomerScreen extends JFrame implements ActionListener{
                 break;
             case"UserProfile":
                 frame.setVisible(false);
-                new ScreenUserProfile();
+                new MenuProfile();
                 break;
             default:
                 break;
