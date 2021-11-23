@@ -5,6 +5,12 @@
  */
 package Main;
 
+import Controller.AdminManager;
+import Controller.CustomerManager;
+import Controller.DriverManager;
+import Controller.PesananManager;
+import Controller.UserManager;
+import View.MenuGojek.MenuGojek;
 import View.ScreenLogin;
 
 /**
@@ -13,6 +19,11 @@ import View.ScreenLogin;
  */
 public class Main {
     public static void main(String[] args) {
+        AdminManager.getInstance().setAdmin(null);
+        CustomerManager.getInstance().setCustomer(null);
+        DriverManager.getInstance().setDrivers(null);
+        PesananManager.getInstance().setPesanan(null);
+        UserManager.getInstance().setUser(null);
         new ScreenLogin();
     }
 }
