@@ -25,10 +25,10 @@ import javax.swing.JPasswordField;
 public class CustomerScreen extends JFrame implements ActionListener{
     private JFrame frame;
     private JLabel labeljudul;
-    private JButton gojekbutton,gofoodbutton,topupbutton,userprofilebutton;
+    private JButton gojekbutton,gofoodbutton,topupbutton,userprofilebutton,historybutton;
     public CustomerScreen(){
         frame = new JFrame("Login");
-        frame.setSize(400, 300);
+        frame.setSize(400, 400);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         
@@ -48,14 +48,19 @@ public class CustomerScreen extends JFrame implements ActionListener{
         topupbutton.addActionListener(this);
         
         userprofilebutton = new JButton("UserProfile");
-        userprofilebutton.setBounds(100, 150, 200, 30);
+        userprofilebutton.setBounds(100, 200, 200, 30);
         userprofilebutton.addActionListener(this);
+        
+        historybutton = new JButton("History");
+        historybutton.setBounds(100, 250, 200, 30);
+        historybutton.addActionListener(this);
         
         frame.add(labeljudul);
         frame.add(gojekbutton);
         frame.add(gofoodbutton);
         frame.add(topupbutton);
         frame.add(userprofilebutton);
+        frame.add(historybutton);
         frame.setLayout(null);
         frame.setVisible(true);
     }
@@ -74,11 +79,15 @@ public class CustomerScreen extends JFrame implements ActionListener{
                 break;
             case"TopUp":
                 frame.setVisible(false);
-                new ScreenTopUp();
+                new TopupScreen();
                 break;
             case"UserProfile":
                 frame.setVisible(false);
-                new ScreenUserProfile();
+                new MenuProfile();
+                break;
+            case"History":
+                frame.setVisible(false);
+                new MenuProfile();
                 break;
             default:
                 break;
