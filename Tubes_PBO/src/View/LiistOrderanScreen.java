@@ -4,7 +4,6 @@
  */
 package yudistira;
 
-
 /**
  *
  * @author yudis
@@ -20,10 +19,13 @@ public class LiistOrderanScreen {
         JPanel panel = new JPanel();  
         panel.setLayout(new FlowLayout());  
         JLabel label = new JLabel(" Daftar Oderan ");  
-        JButton button = new JButton();  
-        button.setText("Lihat list Oderan ");  
+        JButton button1 = new JButton();  
+        button1.setText("Lihat list Oderan ");  
+        JButton button2 = new JButton();
+        button2.setText("Kembali");  
         panel.add(label);  
-        panel.add(button);  
+        panel.add(button1);
+        panel.add(button2);
         frame.add(panel);  
         frame.setSize(200, 300);  
         frame.setLocationRelativeTo(null);  
