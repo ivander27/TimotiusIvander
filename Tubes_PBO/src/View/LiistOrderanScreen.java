@@ -8,30 +8,68 @@ package yudistira;
  *
  * @author yudis
  */
- import java.awt.FlowLayout;  
-import javax.swing.JButton;  
-import javax.swing.JFrame;  
-import javax.swing.JLabel;  
-import javax.swing.JPanel;  
-public class LiistOrderanScreen {  
-    public static void main(String s[]) {
-        JFrame frame = new JFrame("List Orderan ");  
-        JPanel panel = new JPanel();  
-        panel.setLayout(new FlowLayout());  
-        JLabel label = new JLabel(" Daftar Oderan ");  
-        JButton button1 = new JButton();  
-        button1.setText("Lihat list Oderan ");  
-        JButton button2 = new JButton();
-        button2.setText("Kembali");  
-        panel.add(label);  
-        panel.add(button1);
-        panel.add(button2);
-        frame.add(panel);  
-        frame.setSize(200, 300);  
-        frame.setLocationRelativeTo(null);  
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
-        frame.setVisible(true);  
-    }  
-}  
-    
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class LiistOrderanScreen {
+   private JFrame mainFrame;
+   private JLabel headerLabel;
+   private JLabel statusLabel;
+   private JPanel controlPanel;
+   private JLabel msglabel;
+
+   public LiistOrderanScreen(){
+      prepareGUI();
+   }
+   public static void main(String[] args){
+      LiistOrderanScreen  swingContainerDemo = new LiistOrderanScreen();  
+      swingContainerDemo.showJFrameDemo();
+   }
+   private void prepareGUI(){
+      mainFrame = new JFrame("List Orderan");
+      mainFrame.setSize(400,400);
+      mainFrame.setLayout(new GridLayout(3, 1));
+      
+      mainFrame.addWindowListener(new WindowAdapter() {
+         public void windowClosing(WindowEvent windowEvent){
+            System.exit(0);
+         }        
+      });    
+      headerLabel = new JLabel("", JLabel.CENTER);        
+      statusLabel = new JLabel("",JLabel.CENTER);    
+      statusLabel.setSize(350,100);
+      msglabel = new JLabel("List Orderan ", JLabel.CENTER);
+
+      controlPanel = new JPanel();
+      controlPanel.setLayout(new FlowLayout());
+
+      mainFrame.add(headerLabel);
+      mainFrame.add(controlPanel);
+      mainFrame.add(statusLabel);
+      mainFrame.setVisible(true);  
+   }
+   private void showJFrameDemo(){
+      headerLabel.setText("Daftar Orderan ");   
+      final JFrame frame = new JFrame();
+      frame.setSize(300, 300);
+      frame.setLayout(new FlowLayout());       
+      frame.add(msglabel);
+      
+      frame.addWindowListener(new WindowAdapter() {
+         public void windowClosing(WindowEvent windowEvent){
+            frame.dispose();
+         }        
+      });    
+      JButton okButton = new JButton("Lihat List");
+      okButton.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent e) {
+            statusLabel.setText("Halaman Pengguna ");
+            frame.setVisible(true);
+         }
+      });
+      controlPanel.add(okButton);
+      mainFrame.setVisible(true);  
+   }
+}
 
