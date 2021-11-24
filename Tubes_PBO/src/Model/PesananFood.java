@@ -4,26 +4,29 @@
  * and open the template in the editor.
  */
 package Model;
-import java.util.ArrayList;
 /**
  *
  * @author Asus
  */
-public class PesananFood {
+public class PesananFood extends Pesanan{
     private int ID_PesananFood;
-    private String namarestoran;
-    private ArrayList<DetailPesanan> detailpesanan;
     private int TotalHargaFood;
+    private int Statusfood;
 
     public PesananFood() {
     }
 
-    
-    public PesananFood(int ID_PesananFood, String namarestoran, ArrayList<DetailPesanan> detailpesanan, int TotalHargaFood) {
+    public PesananFood(int ID_PesananFood, int TotalHargaFood, int Statusfood) {
         this.ID_PesananFood = ID_PesananFood;
-        this.namarestoran = namarestoran;
-        this.detailpesanan = detailpesanan;
         this.TotalHargaFood = TotalHargaFood;
+        this.Statusfood = Statusfood;
+    }
+
+    public PesananFood(int ID_PesananFood, int TotalHargaFood, int Statusfood, int id_pesanan, Customers customer, Driver driver, String tanggalpemesanan, String metodepembayaran, String titikawal, String titikakhir, int totalharga, int jarak) {
+        super(id_pesanan, customer, driver, tanggalpemesanan, metodepembayaran, titikawal, titikakhir, totalharga, jarak);
+        this.ID_PesananFood = ID_PesananFood;
+        this.TotalHargaFood = TotalHargaFood;
+        this.Statusfood = Statusfood;
     }
 
     public int getID_PesananFood() {
@@ -34,22 +37,6 @@ public class PesananFood {
         this.ID_PesananFood = ID_PesananFood;
     }
 
-    public String getNamarestoran() {
-        return namarestoran;
-    }
-
-    public void setNamarestoran(String namarestoran) {
-        this.namarestoran = namarestoran;
-    }
-
-    public ArrayList<DetailPesanan> getDetailpesanan() {
-        return detailpesanan;
-    }
-
-    public void setDetailpesanan(ArrayList<DetailPesanan> detailpesanan) {
-        this.detailpesanan = detailpesanan;
-    }
-
     public int getTotalHargaFood() {
         return TotalHargaFood;
     }
@@ -58,6 +45,13 @@ public class PesananFood {
         this.TotalHargaFood = TotalHargaFood;
     }
 
-    
+    public int getStatusfood() {
+        return Statusfood;
+    }
+
+    public void setStatusfood(int Statusfood) {
+        this.Statusfood = Statusfood;
+    }
+
     
 }

@@ -5,8 +5,12 @@
  */
 package Model;
 
+import Controller.AdminManager;
 import Controller.Controller;
 import Controller.CustomerManager;
+import Controller.DatabaseControl;
+import Controller.DriverManager;
+import Controller.UserManager;
 import java.util.ArrayList;
 
 /**
@@ -16,20 +20,26 @@ import java.util.ArrayList;
 public class User {
     private int id_User;
     private String nama;
-    private String alamat;
     private String username;
     private String password;
+    private String noHp;
+    private String email;
+    private String tanggallahir;
+    private int tipe;
     
     public User(){
     
     }
 
-    public User(int id_User, String nama, String alamat, String username, String password) {
+    public User(int id_User, String nama, String username, String password, String noHp, String email, String tanggallahir, int tipe) {
         this.id_User = id_User;
         this.nama = nama;
-        this.alamat = alamat;
         this.username = username;
         this.password = password;
+        this.noHp = noHp;
+        this.email = email;
+        this.tanggallahir = tanggallahir;
+        this.tipe = tipe;
     }
 
     public int getId_User() {
@@ -48,14 +58,6 @@ public class User {
         this.nama = nama;
     }
 
-    public String getAlamat() {
-        return alamat;
-    }
-
-    public void setAlamat(String alamat) {
-        this.alamat = alamat;
-    }
-
     public String getUsername() {
         return username;
     }
@@ -72,52 +74,52 @@ public class User {
         this.password = password;
     }
 
-    
-    
-    public boolean cekRegister(String username, String email){
-        ArrayList<User> User = Controller.getAllUsers();
+    public String getNoHp() {
+        return noHp;
+    }
+
+    public void setNoHp(String noHp) {
+        this.noHp = noHp;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTanggallahir() {
+        return tanggallahir;
+    }
+
+    public void setTanggallahir(String tanggallahir) {
+        this.tanggallahir = tanggallahir;
+    }
+
+    public int getTipe() {
+        return tipe;
+    }
+
+    public void setTipe(int tipe) {
+        this.tipe = tipe;
+    }
+
+          
+    public boolean cekLogin(String username, String password){
         int i = 0;
-        boolean status = true;
-        while(status && i < User.size()){
-            if(username.equals(User.get(i).getUsername())){
-                status = false;
-            }
-            i++;
+        User user = new User();
+        boolean status = false;
+        DatabaseControl dbControl = new DatabaseControl();
+        user = dbControl.getUser(username,password);
+        UserManager.getInstance().setUser(user);
+        
+        if(user != null){
+            status = true;
+        }else{
+            status = false;
         }
         return status;
-    }
-        
-    public String cekLogin(String username, String password){
-        int i = 0;
-        ArrayList<User> allUser = new ArrayList<>();
-        String tipe = "";
-        boolean status = false;
-        
-        while (status == false && i < allUser.size()) {
-            if(allUser.get(i) instanceof Customers){
-                Customers customer = (Customers) allUser.get(i);
-                if(username.equals(customer.getUsername()) && password.equals(customer.getPassword())){
-                    CustomerManager.getInstance().setCustomer(customer);
-                    status = true;
-                    tipe = "Customer";
-                }
-            }else if(allUser.get(i) instanceof Driver){
-                Driver driver = (Driver) allUser.get(i);
-                if(username.equals(driver.getUsername()) && password.equals(driver.getPassword())){
-                    CustomerManager.getInstance().setCustomer(driver);
-                    status = true;
-                    tipe = "driver";
-                }
-            }else if(allUser.get(i) instanceof Admin){
-                Admin admin = (Admin) allUser.get(i);
-                if(username.equals(admin.getUsername()) && password.equals(admin.getPassword())){
-                    CustomerManager.getInstance().setCustomer(admin);
-                    status = true;
-                    tipe = "admin";
-                }
-            }
-            i++;
-        }
-        return(tipe);
     }
 }
